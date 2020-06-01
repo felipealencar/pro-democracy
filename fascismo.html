@@ -1,0 +1,213 @@
+<html>
+	<title>Gerador de Bandeira Antifascista</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="HandheldFriendly" content="true">
+	<style>
+		body {
+			margin: 5% auto;
+			font-size: 16px;
+		}
+
+		input {
+			/* enlarge by 16/12 = 133.33% */
+			border-radius: 6.666666667px;
+			font-size: 16px;
+			line-height: 26.666666667px;
+			padding: 6.666666667px;
+			width: 133.333333333%;
+			
+			/* scale down by 12/16 = 75% */
+			transform: scale(0.75);
+			transform-origin: left top;
+			
+			/* remove extra white space */
+			margin-bottom: -10px;
+			margin-right: -33.333333333%;
+		}
+		
+		.container {
+			margin: 0 auto;
+			background: white;
+			width: 500px;
+			display: block;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		canvas {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		.box {
+			width: 100%;
+			background: #fff;
+		}
+		
+		label, legend {
+			font: 16px sans-serif;
+		}
+		
+		form {
+			position : relative;
+			width  : 90%;
+			margin : 0 auto;
+			padding: 1em;
+			background : #FFF;
+
+			/* we create our grid */
+		    display  : grid;
+			grid-gap : 20px;
+			grid-template-columns : repeat(1, 2fr);
+			grid-template-rows    : 1em 3em 2em 2em;
+		}
+		
+		.footer {
+			font-family: Arial, Helvetica, sans-serif;
+			padding: 1em;
+		}
+		
+		.footer a {
+			color: black;
+		}
+		
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			width: 20px;
+			height: 20px;
+			background: black;
+			border-radius: 50%;
+			cursor: -moz-grab;
+			cursor: -webkit-grab; 
+		}
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<body>
+		<div class="container">
+			<div class="box">
+				<form>
+					<legend><b>GERADOR DE BANDEIRA ANTIFASCISTA</b></legend>
+
+					<label>Nome: <input type=text id=nome placeholder="Digite..."></label>
+					<label>Cor: <input type=range id=rHue max=359 value=0></label>
+					<label>Saturação: <input type=range id=rSat value=100></label>
+					<label>Luminosidade: <input type=range id=rL max=200 value=100></label>
+				</form>
+				<canvas id="c" width="100%" height="100%"></canvas>
+				<div id="toggle">
+				</div>
+				<a id="link"></a>
+			</div>
+			<div class="footer">
+				Desenvolvido por: <a href="http://felipealencar.net">felipealencar.net</a>
+			</div>
+		</div>
+		
+		
+	</body>
+	<script>
+	
+		var ctx = c.getContext("2d");
+		var img = new Image(); img.onload = demo; img.src = "bandeira.png";
+		
+		function drawTextAlongArc(context, str, centerX, centerY, radius, angle){
+                context.save();
+                context.translate(centerX, centerY);
+                context.rotate(-1 * angle / 2);
+                context.rotate(-1 * (angle / str.length) / 2);
+                for (var n = 0; n < str.length; n++) {
+                    context.rotate(angle / str.length);
+                    context.save();
+                    context.translate(0, -1 * radius);
+                    var char = str[n];
+                    context.fillText(char, 0, 0);
+                    context.restore();
+                }
+                context.restore();
+		}
+		
+		function demo() {
+			c.width = 500;
+			c.height = 500;
+			render();
+
+		}
+
+		function render() {
+		  
+			var hue = +rHue.value, sat = +rSat.value, l = +rL.value;
+			
+			ctx.clearRect(0, 0, c.width, c.height);
+			ctx.globalCompositeOperation = "source-over";
+			ctx.drawImage(img, 0, 0, c.width, c.height);
+
+			// adjust "lightness"
+			ctx.globalCompositeOperation = l < 100 ? "color-burn" : "color-dodge";
+			// for common slider, to produce a valid value for both directions
+			l = l >= 100 ? l - 100 : 100 - (100 - l);
+			ctx.fillStyle = "hsl(0, 50%, " + l + "%)";
+			ctx.fillRect(0, 0, c.width, c.height);
+		
+			// adjust saturation
+			ctx.globalCompositeOperation = "saturation";
+			ctx.fillStyle = "hsl(0," + sat + "%, 50%)";
+			ctx.fillRect(0, 0, c.width, c.height);
+			// adjust hue
+			ctx.globalCompositeOperation = "hue";
+			ctx.fillStyle = "hsl(" + hue + ",1%, 50%)";
+			ctx.fillRect(0, 0, c.width, c.height);
+		  
+			// clip
+			ctx.globalCompositeOperation = "destination-in";
+			ctx.drawImage(img, 0, 0, c.width, c.height);
+			ctx.globalCompositeOperation = "source-over";
+			ctx.font = "bold 50px arial";
+			ctx.textAlign = "center";
+			ctx.fillStyle = "white";
+			
+			var centerX = (c.width / 2)-0;
+			var centerY = c.height - 260;
+			var angle = Math.PI * -0.50; // radians
+			var radius = -225;
+			drawTextAlongArc(ctx, "ANTIFASCISTA", centerX, centerY, radius, angle);
+			
+			var centerX = (c.width / 2)-0;
+			var centerY = c.height - 240;
+			upperNome = nome.value.toUpperCase();
+			var angle = Math.PI * 0.15 + (upperNome.length/10) ; // radians
+			var radius = 190;
+			drawTextAlongArc(ctx, upperNome, centerX, centerY, radius, angle);
+			dataUrl = c.toDataURL();
+			
+			
+			imageFoo = document.createElement('img');
+			imageFoo.setAttribute("id", "bandeira");
+			imageFoo.src = dataUrl;
+			toggleImg.appendChild(imageFoo);
+			toggleImg = document.getElementById('toggle');
+			if(toggleImg.childElementCount >= 0){
+				toggleImg.removeChild(toggleImg.childNodes[0]);
+			}
+			
+			c.style.display="none";
+			
+			
+			
+		}
+		
+		// Converts canvas to an image
+		function convertCanvasToImage(canvas) {
+			var image = new Image();
+			image.src = canvas.toDataURL("image/png");
+			return image;
+		}
+
+		nome.oninput = rHue.oninput = rSat.oninput = rL.oninput = render;
+		
+
+
+	</script>
+</html>
+
