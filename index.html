@@ -185,15 +185,13 @@
 			imageFoo = document.createElement('img');
 			imageFoo.setAttribute("id", "bandeira");
 			imageFoo.src = dataUrl;
-			toggleImg.appendChild(imageFoo);
 			toggleImg = document.getElementById('toggle');
+			toggleImg.appendChild(imageFoo);
 			if(toggleImg.childElementCount >= 0){
 				toggleImg.removeChild(toggleImg.childNodes[0]);
 			}
 			
 			c.style.display="none";
-			
-			
 			
 		}
 		
@@ -205,9 +203,6 @@
 		}
 
 		nome.oninput = rHue.oninput = rSat.oninput = rL.oninput = render;
-		
-
-
 	</script>
 </html>
 
