@@ -46,6 +46,11 @@
 			background: #fff;
 		}
 		
+		#toggle {
+			width: 500px;
+			height: 500px;
+		}
+		
 		label, legend {
 			font: 16px sans-serif;
 		}
@@ -187,7 +192,7 @@
 			imageFoo.src = dataUrl;
 			toggleImg = document.getElementById('toggle');
 			toggleImg.appendChild(imageFoo);
-			if(toggleImg.childElementCount >= 0){
+			if(toggleImg.childElementCount >= 1){
 				toggleImg.removeChild(toggleImg.childNodes[0]);
 			}
 			
