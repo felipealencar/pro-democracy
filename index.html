@@ -102,11 +102,8 @@
 				<form>
 					<legend><b>GERADOR DE BANDEIRA ANTIFASCISTA</b></legend>
 
-					<label>Nome de cima: <input type=text id=nome value="ABCDEFGHIJLMN" placeholder="Digite..."></label>
+					<label>Nome de cima: <input type=text id=nome  placeholder="Digite..."></label>
 					<label>Nome de baixo: <input type=text id=nome2 value="ANTIFASCISTA" placeholder="Digite o segundo nome..."></label>
-					<label>Cor: <input type=range id=rHue max=359 value=0></label>
-					<label>Saturação: <input type=range id=rSat value=55></label>
-					<label>Luminosidade: <input type=range id=rL max=200 value=50></label>
 				</form>
 				<canvas id="c" width="100%" height="100%"></canvas>
 				<div id="toggle">
@@ -152,7 +149,7 @@
 
 		function render() {
 		  
-			var hue = +rHue.value, sat = +rSat.value, l = +rL.value;
+			var hue = 0, sat = 55, l = 50;
 			
 			ctx.clearRect(0, 0, c.width, c.height);
 			ctx.globalCompositeOperation = "source-over";
@@ -218,7 +215,7 @@
 			return image;
 		}
 
-		nome2.oninput = nome.oninput = rHue.oninput = rSat.oninput = rL.oninput = render;
+		nome2.oninput = nome.oninput = render;
 	</script>
 </html>
 
