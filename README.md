@@ -19,7 +19,7 @@ Não há prazos ou um processo de desenvolvimento a ser seguido. As contribuiç�
 Por enquanto, o projeto e seus incrementos serão gerenciados por um único gerente. Mas, como metodologia de gerenciamento, o caminho deve ser um gerenciamento distribuído entre mais integrantes do projeto.
 
 ### Planejamento
-O projeto não tem uma data de término, sendo composto por incrementos que devem perdurar enquanto houver necessidade de criação de tecnologias para alcançar o objetivo do projeto em questão. A tabela a seguir descreve o planejamento das tecnologias a serem desenvolvidas:
+O projeto não tem uma data de término, sendo composto por incrementos que devem perdurar enquanto houver necessidade de criação de tecnologias para alcançar o objetivo do projeto em questão. A tabela a seguir descreve o planejamento das tecnologias a serem desenvolvidas até o momento:
 
 |  Nome  | Objetivo | Descrição | Responsável | Data de Criação  |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
