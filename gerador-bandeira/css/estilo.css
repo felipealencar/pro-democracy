@@ -1,0 +1,123 @@
+body {
+	margin: 0.5% auto;
+	font-size: 16px;
+}
+
+input {
+	/* enlarge by 16/12 = 133.33% */
+	border-radius: 6.666666667px;
+	font-size: 20px;
+	line-height: 26.666666667px;
+	padding: 6.666666667px;
+	width: 133.333333333%;
+
+	/* scale down by 12/16 = 75% */
+	transform: scale(0.75);
+	transform-origin: left top;
+
+	/* remove extra white space */
+	margin-bottom: -10px;
+	margin-right: -33.333333333%;
+}
+
+input[type="text"] {
+	width: 130%;
+	height: 42px;
+}
+
+input[type="checkbox"] {
+	width: 10%;
+	width: 42px;
+	height: 42px;
+	margin: 0;
+	margin-left: 5px;
+	
+}
+
+.item {
+	margin: 5px;
+	background: tomato;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.container {
+	margin: 0 auto;
+	background: white;
+	width: 500px;
+	display: block;
+	justify-content: center;
+	align-items: center;
+}
+
+canvas {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.box {
+	width: 100%;
+	background: #fff;
+}
+
+#toggle {
+	width: 500px;
+	height: 500px;
+}
+
+label, legend {
+	font: 16px sans-serif;
+}
+
+form {
+	position : relative;
+	display: grid;
+	width  : 90%;
+	margin : 0 auto;
+	padding: 1em;
+	background : #FFF;
+
+	/* we create our grid */
+	display  : grid;
+	grid-gap : 0px;
+	grid-template-columns : 1fr auto;
+	grid-template-rows    : 3em 1.5em 3em 1.5em 3em 1.5em 3em 1.5em;
+}
+
+legend {
+	grid-column: 1 / span 2;
+	grid-row: 1;
+}
+
+label {
+	grid-column: span 2;
+}
+
+input[type="range"] {
+	grid-column: span 2;
+}
+
+#label-nome {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+#label-plural {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+.footer {
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 1em;
+	text-align: center;
+}
+
+.footer a {
+	color: black;
+}
+
+input[type="text"]::placeholder {
+	font-size: 20px;
+}
