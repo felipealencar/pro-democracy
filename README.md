@@ -27,6 +27,6 @@ O projeto não tem uma data de término, sendo composto por incrementos que deve
 | Detector de Conteúdo Fascista | Bot que monitora redes sociais visando identificar conteúdo fascista. | - | - |  - |
 
 ### Licença e Direitos Autorais
-Os artefatos criados neste projeto devem ser livres e gratuitos para uso, restando aos utilizadores mencionar os créditos ao autor do artefato em questão.
+Os artefatos criados neste projeto devem ser livres e gratuitos para uso, restando aos utilizadores mencionar os créditos ao(s) autor(es) do artefato em questão.
 
 Neste sentido, o projeto segue a licença [Apache Licence v2.0](http://www.apache.org/licenses/LICENSE-2.0 "Apache Licence v2.0").
