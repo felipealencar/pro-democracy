@@ -1,4 +1,4 @@
-# antifascismo.naweb
+# prodemocracy.web
 ### Sobre
 Este é um projeto colaborativo que tem como objetivo criar ferramentas tecnológicas que auxiliem no combate via Web aos movimentos antidemocráticos, racistas e autoritários que ocorrem no Brasil.
 
