@@ -14,7 +14,6 @@
 		<link href="css/estilo.css" rel="stylesheet">
 		<link href="css/range.css" rel="stylesheet">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -25,17 +24,21 @@
 						<br>
 						<sup><i>(Ao terminar, pressione na imagem para salvá-la)</i></sup>
 					</legend>
-					<label id="label-nome" for="nome">Nome</label><input type="text" id="nome" placeholder="Digite...">
+					<label id="label-nome" for="nome">Nome</label><input type="text" id="nome" placeholder="Digite o nome...">
 					<label id="label-plural" for="p">Plural</label><input type="checkbox" id="p" value="S">
-				
-					<label for="rHue">Cor</label><input type="range" id="rHue" max="359" value="0">
-					<label for="rSat">Saturação</label><input type="range" id="rSat" value="100">
-					<label for="rL">Luminosidade</label><input type="range" id="rL" max="200" value="30"></label>
+					
+					<!-- <label for="nome causa">Nome da Causa</label><input type="text" id="causa" placeholder="Digite nome da causa..."> -->
+					<label for="cor">Cor</label><input type="range" id="cor" max="359" value="0">
+					<label for="saturacao">Saturação</label><input type="range" id="saturacao" value="100">
+					<label for="luminosidade">Luminosidade</label><input type="range" id="luminosidade" max="200" value="30"></label>
 				</form>
 				<canvas id="c" width="100%" height="100%"></canvas>
 				<div id="toggle">
+					<img id="bandeira-customizada" />
 				</div>
 				<a id="link"></a>
+				<button onclick="saveImage()">Baixar</button>
+				
 			</div>
 			<div class="footer">
 				<sup>
@@ -44,15 +47,7 @@
 				</sup>
 			</div>
 		</div>
-
-
 	</body>
-	<script>
-		var ctx = c.getContext("2d");
-		var bandeiraCustomizada = new Image();
-		bandeiraCustomizada.onload = demo;
-		bandeiraCustomizada.src = "bandeira.png";
-		p.oninput = nome.oninput = rHue.oninput = rSat.oninput = rL.oninput = render;
-	</script>
+	<script type="text/javascript" src="js/main.js"></script>
 </html>
 
